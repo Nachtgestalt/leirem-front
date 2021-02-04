@@ -1,0 +1,107 @@
+$bg-color: hsl(256, 33, 10);
+$dot-color: hsl(256, 33, 70);
+
+// Dimensions
+$dot-size: 1px;
+$dot-space: 22px;
+
+
+:host {
+  color: #1b1b1b;
+  text-align: left;
+  direction: ltr;
+  display: block !important;
+
+  * {
+    box-sizing: border-box;
+  }
+}
+
+.outer {
+  background-color: #e8e6e6;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23142f75' fill-opacity='0.46' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
+  display: table;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+.template-section {
+  display: table-row;
+}
+
+.template-section.main-section {
+  height: 100%;
+}
+
+.middle {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.fade-in-lightbox {
+  animation: fadeIn .3s ease-in;
+  -webkit-animation: fadeIn .3s ease-in;
+  -moz-animation: fadeIn .3s ease-in;
+  -ms-animation: fadeIn .3s ease-in;
+  -o-animation: fadeIn .3s ease-in;
+}
+
+.inner, .sign-in-box {
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  max-width: 440px;
+  width: calc(100% - 40px);
+  padding: 44px;
+  margin-bottom: 28px;
+  background-color: #fff;
+  -webkit-box-shadow: 0 2px 6px rgba(0, 0, 0, .2);
+  -moz-box-shadow: 0 2px 6px rgba(0, 0, 0, .2);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, .2);
+  min-width: 320px;
+  min-height: 338px;
+  overflow: hidden;
+}
+
+.logo {
+  max-width: 256px;
+  height: 48px;
+}
+
+img {
+  vertical-align: middle;
+  border: 0;
+}
+
+.row {
+  margin-left: 0;
+  margin-right: 0;
+
+  :before, :after {
+    content: " ";
+    display: table;
+  }
+}
+
+.title {
+  line-height: 1.75rem;
+  //padding-bottom: 2.3632px;
+  //padding-top: 2.3632px;
+  color: #1b1b1b;
+  font-size: 1.5rem;
+  font-weight: 600;
+  padding: 0;
+  margin-top: 16px;
+  margin-bottom: 12px;
+  font-family: "Segoe UI", "Helvetica Neue", "Lucida Grande", "Roboto", "Ebrima", "Nirmala UI", "Gadugi", "Segoe Xbox Symbol", "Segoe UI Symbol", "Meiryo UI", "Khmer UI", "Tunga", "Lao UI", "Raavi", "Iskoola Pota", "Latha", "Leelawadee", "Microsoft YaHei UI", "Microsoft JhengHei UI", "Malgun Gothic", "Estrangelo Edessa", "Microsoft Himalaya", "Microsoft New Tai Lue", "Microsoft PhagsPa", "Microsoft Tai Le", "Microsoft Yi Baiti", "Mongolian Baiti", "MV Boli", "Myanmar Text", "Cambria Math", serif;
+}
+
+.form-group {
+  margin-bottom: 16px;
+  width: 100%;
+}
+
+.w-100 {
+  width: 100% !important;
+}
