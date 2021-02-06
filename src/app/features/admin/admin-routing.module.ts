@@ -1,15 +1,20 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {AdminComponent} from './admin.component';
 import {DashboardComponent} from './dashboard/dashboard.component';
+import {AdminLayoutComponent} from './layout/admin-layout/admin-layout.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: AdminComponent,
+    component: AdminLayoutComponent,
     children: [
       {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
-      {path: 'dashboard', component: DashboardComponent, data: {titulo: 'Inicio'}},
+      {path: 'dashboard', component: DashboardComponent, data: {breadcrumb: 'Inicio'}},
+      {
+        path: 'clientes',
+        loadChildren: () => import('./clients/clients.module').then(m => m.ClientsModule),
+        data: {breadcrumb: 'Clientes'}
+      },
     ]
   }
 ];

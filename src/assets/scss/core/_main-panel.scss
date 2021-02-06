@@ -1,0 +1,48 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.is-mobile .toolbar {
+  position: fixed;
+  z-index: 2;
+}
+
+.is-mobile .main-panel {
+  flex: 1 0 auto;
+}
+
+.main-panel {
+  flex: 1;
+
+  //width: $sidebar-width;
+  //@include transition (0.33s, cubic-bezier(0.685, 0.0473, 0.346, 1));
+
+  .main-content {
+    margin-top: 70px;
+    padding: 30px 15px;
+    min-height: calc(100vh - 123px);
+  }
+
+  .footer {
+    border-top: 1px solid #e7e7e7;
+  }
+
+  .navbar {
+    margin-bottom: 0;
+  }
+
+  .header {
+    margin-bottom: 30px;
+
+    .title {
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+  }
+}

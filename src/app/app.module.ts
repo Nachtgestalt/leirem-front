@@ -14,6 +14,9 @@ import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {environment} from '../environments/environment';
 import {AuthEffects} from './store/effects/auth.effects';
 import {HttpClientModule} from '@angular/common/http';
+import {FooterComponent} from './shared/layout/footer/footer.component';
+import {CommonModule} from '@angular/common';
+import {CoreModule} from './core/core.module';
 
 @NgModule({
   declarations: [
@@ -21,6 +24,7 @@ import {HttpClientModule} from '@angular/common/http';
     LoginComponent
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -33,9 +37,11 @@ import {HttpClientModule} from '@angular/common/http';
       name: 'Leirem',
       maxAge: 25,
       logOnly: environment.production
-    })
+    }),
+    CoreModule
   ],
   providers: [],
+  exports: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {
