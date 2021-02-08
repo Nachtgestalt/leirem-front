@@ -13,5 +13,5 @@ export enum EAuthActions {
 export const Login = createAction(EAuthActions.LOGIN, props<{ user: IUser }>());
 export const LoginSuccess = createAction(EAuthActions.LOGIN_SUCCESS, props<{ user: IUser }>());
 export const LoginFailure = createAction(EAuthActions.LOGIN_FAILURE, props<{ payload?: any, hasError?: boolean, status?: number }>());
-export const Logout = createAction(EAuthActions.LOGOUT, props<{ user: IUser }>());
+export const Logout = createAction(EAuthActions.LOGOUT);
 export const ChangeErrorMessage = createAction(EAuthActions.CHANGE_ERROR_MESSAGE, props<{ hasError: boolean }>());

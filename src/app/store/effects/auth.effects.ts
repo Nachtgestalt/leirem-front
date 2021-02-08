@@ -12,7 +12,8 @@ import {AuthService} from '../../auth/auth.service';
 export class AuthEffects {
   constructor(private actions$: Actions,
               private authService: AuthService,
-              private store: Store<IAppState>) {
+              private store: Store<IAppState>,
+              private router: Router) {
   }
 
   @Effect()
@@ -53,14 +54,11 @@ export class AuthEffects {
   @Effect({dispatch: false})
   public LogOut: Observable<any> = this.actions$.pipe(
     ofType(Logout),
-    switchMap((user: any) => {
-      return this.authService.logout(user).pipe(
-        tap(() => {
-          localStorage.removeItem('token');
-          localStorage.removeItem('refreshToken');
-          localStorage.removeItem('authState');
-        })
-      );
-    }),
+    tap(() => {
+      localStorage.removeItem('token');
+      // localStorage.removeItem('refreshToken');
+      // localStorage.removeItem('authState');
+      this.router.navigate(['/']);
+    })
   );
 }

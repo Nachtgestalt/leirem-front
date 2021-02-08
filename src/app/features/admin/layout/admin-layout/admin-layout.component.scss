@@ -1,0 +1,50 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.mat-toolbar.mat-primary {
+  background: #142F75;
+  color: #fff;
+}
+
+.is-mobile .toolbar {
+  position: fixed;
+  z-index: 2;
+}
+
+.is-mobile .main-panel {
+  flex: 1 0 auto;
+}
+
+.main-panel {
+  flex: 1;
+}
+
+h1.company-name {
+  margin-left: 8px;
+}
+
+
+mat-sidenav {
+  width: 260px;
+}
+
+.title{
+  text-decoration: none;
+  color: white;
+  font-size: 1.8rem;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:visited{
+  color: black;
+}
