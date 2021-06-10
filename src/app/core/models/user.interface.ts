@@ -5,4 +5,5 @@ export interface IUser {
   accessToken?: string;
   refreshToken?: string;
   status: number;
+  role?: string;
 }

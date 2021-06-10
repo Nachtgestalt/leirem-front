@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpResponse} from '@angular/common/http';
 import {environment} from '../../environments/environment';
+import {map} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,15 @@ export class AuthService {
   }
 
   login(username: string, password: string) {
-    return this.http.post<any>(`${environment.apiUrl}/auth/login`, {username, password});
+    const body = {
+      username,
+      password
+    };
+    console.log(body);
+    return this.http.post<any>(`${environment.apiUrl}/login`, body, {observe: 'response'})
+      .pipe(
+        map((resp: HttpResponse<any>) => resp.headers.get('authorization'))
+      );
   }
 
   logout(user: any) {

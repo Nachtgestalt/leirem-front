@@ -1,5 +1,5 @@
 import {createReducer, on} from '@ngrx/store';
-import {ChangeErrorMessage, LoginFailure, LoginSuccess, Logout} from '../actions/auth.actions';
+import {ChangeErrorMessage, LoginFailure, LoginSuccess, Logout, SetUserData} from '../actions/auth.actions';
 import {initialAuthState} from '../state/auth.state';
 
 const _authReducer = createReducer(initialAuthState,
@@ -10,6 +10,12 @@ const _authReducer = createReducer(initialAuthState,
       user,
       errorMessage: null,
       status: 1
+    };
+  }),
+  on(SetUserData, (state, {user}) => {
+    return {
+      ...state,
+      user
     };
   }),
   on(LoginFailure, (state, {payload, hasError, status}) => {
