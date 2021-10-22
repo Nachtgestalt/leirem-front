@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router} from '@angular/router';
 import {Observable} from 'rxjs';
 import {Store} from '@ngrx/store';
-import {IAppState} from '../../store/state/app.state';
+import {IAppState} from '../../state/state/app.state';
 import {map} from 'rxjs/operators';
 
 @Injectable({
