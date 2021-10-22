@@ -6,7 +6,7 @@ import {Store} from '@ngrx/store';
 import {Router} from '@angular/router';
 import {Login} from '../../../../state/auth/auth.actions';
 import {AppState} from '../../../../state';
-import {IAuthState} from '../../../../data/models/authState.model';
+import {AuthState} from '../../../../state/auth/auth.reducers';
 
 @Component({
   selector: 'app-login',
@@ -16,11 +16,10 @@ import {IAuthState} from '../../../../data/models/authState.model';
 export class LoginComponent implements OnInit, OnDestroy {
 
   loginForm: FormGroup;
-
   hidePassword = true;
 
   authSubscription: Subscription;
-  authState: Observable<any>;
+  authState$: Observable<any>;
 
   get f() {
     return this.loginForm.controls;
@@ -28,15 +27,14 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   constructor(private store: Store<AppState>,
               private router: Router) {
-    this.authState = this.store.select('auth');
+    this.authState$ = this.store.select('auth');
   }
 
   ngOnInit(): void {
     this.loginForm = this.createLoginForm();
-    this.authSubscription = this.authState.subscribe((state: IAuthState) => {
-      console.log(state);
+    this.authSubscription = this.authState$.subscribe(async (state: AuthState) => {
       if (state.isAuthenticated) {
-        this.router.navigate(['/dashboard/home']);
+        await this.router.navigate(['/dashboard/home']);
       }
     });
   }
@@ -60,8 +58,6 @@ export class LoginComponent implements OnInit, OnDestroy {
 
     const password = this.f.password.value;
     this.f.password.patchValue(password.trim());
-
-    console.log('Iniciando sesion');
 
     this.store.dispatch(Login({user: this.loginForm.value}));
   }

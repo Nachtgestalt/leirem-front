@@ -8,11 +8,6 @@
   right: 0;
 }
 
-.mat-toolbar.mat-primary {
-  background: #142F75;
-  color: #fff;
-}
-
 .is-mobile .toolbar {
   position: fixed;
   z-index: 2;
@@ -43,8 +38,4 @@ mat-sidenav {
 
 a {
   text-decoration: none;
-}
-
-a:visited{
-  color: black;
 }

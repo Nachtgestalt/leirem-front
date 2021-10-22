@@ -4,6 +4,7 @@ import {MediaMatcher} from '@angular/cdk/layout';
 import {Store} from '@ngrx/store';
 import {Logout} from '../../state/auth/auth.actions';
 import {AppState} from '../../state';
+import {SeasonService} from '../../data/services/season.service';
 
 @Component({
   selector: 'app-content-layout',
@@ -20,7 +21,8 @@ export class ContentLayoutComponent implements OnInit, OnDestroy {
 
   constructor(changeDetectorRef: ChangeDetectorRef,
               media: MediaMatcher,
-              private store: Store<AppState>
+              private store: Store<AppState>,
+              private seasonService: SeasonService
   ) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
@@ -28,6 +30,8 @@ export class ContentLayoutComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.seasons$ = this.seasonService.fetchSeasons();
+
   }
 
   ngOnDestroy(): void {
@@ -35,6 +39,7 @@ export class ContentLayoutComponent implements OnInit, OnDestroy {
   }
 
   changeSeason(season) {
+    console.log(season);
     // this._userService.setSeasonInStorage(season);
     // if (this.routedComponent.refresh) {
     //   this.routedComponent.refresh();

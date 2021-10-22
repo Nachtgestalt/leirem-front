@@ -1,46 +1,48 @@
 import {createReducer, on} from '@ngrx/store';
-import {ChangeErrorMessage, LoginFailure, LoginSuccess, Logout, SetUserData} from './auth.actions';
-import {createEntityAdapter, EntityAdapter, EntityState} from '@ngrx/entity';
-import {IAuthState} from '../../data/models/authState.model';
+import {LoginSuccess, Logout} from './auth.actions';
 
-export interface AuthState extends EntityState<IAuthState> {
+export const initialState: AuthState = {
+    isAuthenticated: false,
+    token: null,
+    status: null
+};
+
+export interface AuthState {
+    isAuthenticated: boolean;
+    token: string | null;
+    status: number | null;
 }
 
-export const adapter: EntityAdapter<IAuthState> = createEntityAdapter<IAuthState>();
-export const initialState: AuthState = adapter.getInitialState();
-
-
 const _authReducer = createReducer(initialState,
-    on(LoginSuccess, (state, {user}) => {
+    on(LoginSuccess, (state, {authStatus}) => {
         return {
             ...state,
-            isAuthenticated: true,
-            user,
-            errorMessage: null,
-            status: 1
+            status: 1,
+            isAuthenticated: authStatus.isAuthenticated,
+            token: authStatus.token
         };
     }),
-    on(SetUserData, (state, {user}) => {
-        return {
-            ...state,
-            user
-        };
-    }),
-    on(LoginFailure, (state, {payload, hasError, status}) => {
-        return {
-            ...state,
-            isAuthenticated: false,
-            errorMessage: payload,
-            hasError,
-            status
-        };
-    }),
-    on(ChangeErrorMessage, (state, {hasError}) => {
-        return {
-            ...state,
-            hasError
-        };
-    }),
+    // on(SetUserData, (state, {user}) => {
+    //     return {
+    //         ...state,
+    //         user
+    //     };
+    // }),
+    // on(LoginFailure, (state, {payload, hasError, status}) => {
+    //     return {
+    //         ...state,
+    //         isAuthenticated: false,
+    //         errorMessage: payload,
+    //         hasError,
+    //         status
+    //     };
+    // }),
+    // on(ChangeErrorMessage, (state, {hasError}) => {
+    //     return {
+    //         ...state,
+    //         hasError
+    //     };
+    // }),
     on(Logout, () => initialState),
 );
 

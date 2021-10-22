@@ -29,7 +29,8 @@
             "styles": [
               "src/assets/css/bootstrap-grid.css",
               "src/assets/scss/dashboard.scss",
-              "src/styles.scss"
+              "src/styles.scss",
+              "src/theme.scss"
             ],
             "scripts": [],
             "vendorChunk": true,
